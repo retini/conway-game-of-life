@@ -1,0 +1,11 @@
+.cell {
+	width: var(--grid-cell-size);
+	height: var(--grid-cell-size);
+	background-color: var(--bg-primary);
+	border-right: 1px solid var(--border-primary);
+	border-bottom: 1px solid var(--border-primary);
+}
+
+.cell.alive {
+	background-color: var(--accent-primary);
+}
