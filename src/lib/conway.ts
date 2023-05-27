@@ -14,11 +14,19 @@ const MINIMUM_ALIVE_NEIGHBORS = 2;
 const MAXIMUM_ALIVE_NEIGHBORS = 3;
 const RESURRECTION_NEIGHBORS = 3;
 
-type ConwayPopulation = number[][];
+type ConwayPopulation = string[][];
 
 type ConwaySize = {
 	rows: number;
 	columns: number;
+};
+
+type ConwayGenerationNumber = number;
+
+type ConwayData = {
+	population: ConwayPopulation;
+	size: ConwaySize;
+	generationNumber: ConwayGenerationNumber;
 };
 
 // Compute the next generation of a Conway's Game of Life population.
@@ -35,19 +43,19 @@ const computeNextGeneration = (population: ConwayPopulation, size: ConwaySize): 
 					neighborRow < 0 || neighborRow >= size.rows || neighborColumn < 0 || neighborColumn >= size.columns;
 				if (isOutOfBound) continue;
 				const neighbor = population[neighborRow][neighborColumn];
-				if (neighbor === 1) aliveNeighborsCount++;
+				if (neighbor === '*') aliveNeighborsCount++;
 			}
-			const isAlive = cell === 1;
+			const isAlive = cell === '*';
 			// Check whether the cell should live or die.
 			if (
 				isAlive &&
 				(aliveNeighborsCount < MINIMUM_ALIVE_NEIGHBORS || aliveNeighborsCount > MAXIMUM_ALIVE_NEIGHBORS)
 			) {
-				nextGeneration[i][j] = 0;
+				nextGeneration[i][j] = '.';
 				continue;
 			}
 			if (!isAlive && aliveNeighborsCount === RESURRECTION_NEIGHBORS) {
-				nextGeneration[i][j] = 1;
+				nextGeneration[i][j] = '*';
 			}
 		}
 	}
@@ -55,4 +63,4 @@ const computeNextGeneration = (population: ConwayPopulation, size: ConwaySize): 
 };
 
 export { computeNextGeneration };
-export type { ConwayPopulation, ConwaySize };
+export type { ConwayData };

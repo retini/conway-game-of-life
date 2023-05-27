@@ -1,26 +1,27 @@
 import './ConwayGrid.css';
 import Cell from '../Cell/Cell';
-import { ConwayPopulation, ConwaySize } from '../../lib/conway';
+import { ConwayData } from '../../lib/conway';
 import { ExtendedCSSProperties } from '../../types/styles.types';
 
 const CELL_SIZE = 50;
 
 type ConwayGridProps = {
-	population: ConwayPopulation;
-	gridSize: ConwaySize;
+	conwayData: ConwayData;
 };
 
-const ConwayGrid = ({ population, gridSize }: ConwayGridProps) => {
+const ConwayGrid = ({ conwayData }: ConwayGridProps) => {
+	const { population, size, generationNumber } = conwayData;
+
 	const cells = [];
 	for (const [i, row] of population.entries()) {
 		for (const [j, cell] of row.entries()) {
 			const id = `${i}-${j}`;
-			cells.push(<Cell key={id} isAlive={cell === 1} />);
+			cells.push(<Cell key={id} isAlive={cell === '*'} />);
 		}
 	}
 
 	const styles: ExtendedCSSProperties = {
-		'--grid-columns-count': gridSize.columns,
+		'--grid-columns-count': size.columns,
 		'--grid-cell-size': `${CELL_SIZE}px`,
 	};
 
