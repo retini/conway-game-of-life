@@ -19,14 +19,11 @@ const Main = () => {
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 	];
 
-	let population = fileInitialPopulation;
-	for (let i = 0; i < fileGenerationNumber; i++) {
-		population = computeNextGeneration(population, fileGridSize);
-	}
+	const nextGeneration = computeNextGeneration(fileInitialPopulation, fileGridSize);
 
 	return (
 		<div className='main'>
-			<ConwayGrid population={population} gridSize={fileGridSize} cellSize={50} />
+			<ConwayGrid population={nextGeneration} gridSize={fileGridSize} cellSize={50} />
 		</div>
 	);
 };
