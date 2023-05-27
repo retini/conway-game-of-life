@@ -23,7 +23,7 @@ const Main = () => {
 
 	return (
 		<div className='main'>
-			<ConwayGrid population={nextGeneration} gridSize={fileGridSize} cellSize={50} />
+			<ConwayGrid population={nextGeneration} gridSize={fileGridSize} />
 		</div>
 	);
 };
