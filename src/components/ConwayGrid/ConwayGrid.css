@@ -1,12 +1,12 @@
 .conwayGrid {
 	background-color: var(--bg-secondary);
 	max-width: fit-content;
-	margin: 50px auto;
+	margin: 30px auto;
 }
 
 .conwayGrid .head {
-	padding: 20px 0;
 	border-bottom: 1px solid var(--border-primary);
+	padding-bottom: 20px;
 }
 
 .conwayGrid .head .generationNumber {

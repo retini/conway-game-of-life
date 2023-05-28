@@ -1,2 +1,5 @@
 .main {
+	max-width: fit-content;
+	margin: auto;
+	padding: 30px 10px;
 }

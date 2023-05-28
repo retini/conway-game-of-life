@@ -55,10 +55,19 @@ const Main = () => {
 		setConwayData({ population, size, generationNumber });
 	};
 
+	const onUploadNewFile = () => {
+		setConwayData(null);
+	};
+
 	return (
 		<div className='main'>
 			{conwayData ? (
-				<ConwayGrid conwayData={conwayData} />
+				<>
+					<button className='btn' onClick={onUploadNewFile}>
+						Upload a new file
+					</button>
+					<ConwayGrid conwayData={conwayData} />
+				</>
 			) : (
 				<>
 					<CustomFileInput onFileUpload={onFileUpload} />
