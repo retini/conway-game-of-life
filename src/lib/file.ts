@@ -2,6 +2,8 @@ import { escapeNonPrintableChars } from '../utils/chars';
 import { ConwayData } from './conway';
 
 const MAX_FILE_SIZE = 3145728;
+const MAX_ROWS = 500;
+const MAX_COLUMNS = 500;
 
 const checkConwayFile = (file: File): void => {
 	if (file.size > MAX_FILE_SIZE) {
@@ -61,11 +63,11 @@ const parseConwayFile = (file: File): Promise<ConwayData> => {
 			const size = { rows, columns };
 
 			// Limit the maximum number of rows and columns.
-			if (rows > 500) {
+			if (rows > MAX_ROWS) {
 				reject(new Error(`The current limit for the rows number is 500, you have set ${rows}"`));
 				return;
 			}
-			if (columns > 500) {
+			if (columns > MAX_COLUMNS) {
 				reject(new Error(`The current limit for the columns number is 500, you have set ${columns}"`));
 				return;
 			}
