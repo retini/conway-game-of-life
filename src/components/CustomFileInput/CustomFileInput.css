@@ -1,10 +1,5 @@
 .customFileInput {
 	display: block;
-	height: max-content;
-	width: max-content;
-	position: relative;
-	z-index: 10;
-	padding: 30px;
 }
 
 .customFileInput .btn {

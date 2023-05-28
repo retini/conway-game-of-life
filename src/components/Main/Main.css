@@ -4,6 +4,11 @@
 	padding: 30px 10px;
 }
 
+.main .customFileInput {
+	margin: 20px 0;
+	text-align: center;
+}
+
 .main .clipboardContent {
 	margin-top: 70px;
 }

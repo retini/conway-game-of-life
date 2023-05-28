@@ -72,6 +72,15 @@ const Main = () => {
 				</>
 			) : (
 				<>
+					<h1>Conway's game of life</h1>
+					<p>This is a React + Typescript web application reproducing Conway's Game of Life</p>
+					<a
+						target='_blank'
+						rel='noopener noreferrer'
+						href='https://github.com/retini/conway-game-of-life.git'
+					>
+						Source code
+					</a>
 					<CustomFileInput onFileUpload={onFileUpload} />
 					{errorMessage && <Alert message={errorMessage} />}
 					<ClipboardContent title='sample.txt' content={CONWAY_FILE_SAMPLE} />
