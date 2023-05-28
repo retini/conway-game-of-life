@@ -79,7 +79,11 @@ const parseConwayFile = (file: File): Promise<ConwayData> => {
 				for (const char of line.trim().split('')) {
 					if (char !== '.' && char !== '*') {
 						reject(
-							new Error(`Unexpected character "${escapeNonPrintableChars(char)}" in population state`)
+							new Error(
+								`Expected the population state chars to be "." or "*". Instead got unexpected character "${escapeNonPrintableChars(
+									char
+								)}"`
+							)
 						);
 						return;
 					}
