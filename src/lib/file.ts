@@ -60,6 +60,16 @@ const parseConwayFile = (file: File): Promise<ConwayData> => {
 			}
 			const size = { rows, columns };
 
+			// Limit the maximum number of rows and columns.
+			if (rows > 500) {
+				reject(new Error(`The current limit for the rows number is 500, you have set ${rows}"`));
+				return;
+			}
+			if (columns > 500) {
+				reject(new Error(`The current limit for the columns number is 500, you have set ${columns}"`));
+				return;
+			}
+
 			// Parse the population state.
 			const population: string[][] = [];
 			for (const line of lines.slice(2)) {
