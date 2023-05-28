@@ -27,7 +27,13 @@ const ConwayGrid = ({ conwayData }: ConwayGridProps) => {
 
 	return (
 		<div className='conwayGrid' style={styles}>
-			{cells}
+			<div className='head'>
+				<div className='generationNumber'>Generation {generationNumber}</div>
+				<div className='sizes'>
+					Rows: {size.rows}, Columns: {size.columns}
+				</div>
+			</div>
+			<div className='cells'>{cells}</div>
 		</div>
 	);
 };

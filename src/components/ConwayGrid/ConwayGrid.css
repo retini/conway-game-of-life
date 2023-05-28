@@ -1,8 +1,20 @@
 .conwayGrid {
-	display: grid;
-	grid-template-columns: repeat(var(--grid-columns-count), var(--grid-cell-size));
-	box-shadow: var(--shadow-medium);
 	background-color: var(--bg-secondary);
 	max-width: fit-content;
 	margin: 50px auto;
+}
+
+.conwayGrid .head {
+	padding: 20px 0;
+	border-bottom: 1px solid var(--border-primary);
+}
+
+.conwayGrid .head .generationNumber {
+	font-size: 27px;
+}
+
+.conwayGrid .cells {
+	display: grid;
+	grid-template-columns: repeat(var(--grid-columns-count), var(--grid-cell-size));
+	box-shadow: var(--shadow-medium);
 }
