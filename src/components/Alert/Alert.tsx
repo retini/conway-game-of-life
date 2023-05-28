@@ -5,7 +5,12 @@ type AlertProps = {
 };
 
 const Alert = ({ message }: AlertProps) => {
-	return <div className='alert'>{message}</div>;
+	return (
+		<div className={'alert'}>
+			<i className='material-symbols-outlined'>error</i>
+			<p className='message'>{message}</p>
+		</div>
+	);
 };
 
 export default Alert;

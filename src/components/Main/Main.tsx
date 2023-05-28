@@ -9,12 +9,11 @@ import { checkConwayFile, parseConwayFile } from '../../lib/file';
 import CONWAY_FILE_SAMPLE from '../../sampleData/conwayFileSample';
 
 const Main = () => {
-	let [isLoading, setIsLoading] = useState<boolean>(false);
 	let [errorMessage, setErrorMessage] = useState<string>('');
 	let [conwayData, setConwayData] = useState<ConwayData | null>(null);
 
 	const onFileUpload: React.ChangeEventHandler<HTMLInputElement> = async (e) => {
-		setIsLoading(true);
+		setErrorMessage('');
 		const fileInput = e.currentTarget as HTMLInputElement;
 
 		let file: File;
@@ -31,7 +30,6 @@ const Main = () => {
 			fileInput.value = '';
 			const error = err as Error;
 			setErrorMessage(error.message);
-			setIsLoading(false);
 			return;
 		}
 
@@ -40,20 +38,21 @@ const Main = () => {
 			({ population, size, generationNumber } = await parseConwayFile(file));
 		} catch (err: unknown) {
 			fileInput.value = '';
+			let errorMessage: string;
 			if (err instanceof Error) {
-				setErrorMessage(err.message);
+				errorMessage = err.message;
 			} else {
-				const message = 'An unexpected error occurred while parsing the file';
-				setErrorMessage(message);
-				console.error(`${message}: ${err}`);
+				errorMessage = 'An unexpected error occurred while parsing the file';
+				console.error(`${errorMessage}: ${err}`);
 			}
-			setIsLoading(false);
+			setTimeout(() => {
+				setErrorMessage(errorMessage);
+			}, 200);
 			return;
 		}
 
 		population = computeNextGeneration(population, size);
 		generationNumber++;
-		setIsLoading(false);
 		setConwayData({ population, size, generationNumber });
 	};
 
@@ -82,7 +81,7 @@ const Main = () => {
 						Source code
 					</a>
 					<CustomFileInput onFileUpload={onFileUpload} />
-					{errorMessage && <Alert message={errorMessage} />}
+					{errorMessage !== '' && <Alert message={errorMessage} />}
 					<ClipboardContent title='sample.txt' content={CONWAY_FILE_SAMPLE} />
 				</>
 			)}
