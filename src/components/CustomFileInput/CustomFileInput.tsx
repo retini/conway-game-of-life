@@ -6,9 +6,9 @@ type CustomFileInputProps = {
 };
 
 const CustomFileInput = ({ onFileUpload }: CustomFileInputProps) => {
-	let inputRef = useRef<HTMLInputElement>(null);
+	const inputRef = useRef<HTMLInputElement>(null);
 
-	let onButtonClick = () => {
+	const onButtonClick = () => {
 		if (inputRef.current) {
 			inputRef.current.click();
 		}

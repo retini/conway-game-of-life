@@ -9,8 +9,8 @@ import { checkConwayFile, parseConwayFile } from '../../lib/file';
 import CONWAY_FILE_SAMPLE from '../../sampleData/conwayFileSample';
 
 const Main = () => {
-	let [errorMessage, setErrorMessage] = useState<string>('');
-	let [conwayData, setConwayData] = useState<ConwayData | null>(null);
+	const [errorMessage, setErrorMessage] = useState<string>('');
+	const [conwayData, setConwayData] = useState<ConwayData | null>(null);
 
 	const onFileUpload: React.ChangeEventHandler<HTMLInputElement> = async (e) => {
 		setErrorMessage('');

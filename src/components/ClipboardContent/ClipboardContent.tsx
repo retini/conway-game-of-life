@@ -7,7 +7,7 @@ type ClipboardContentProps = {
 };
 
 const ClipboardContent = ({ title, content }: ClipboardContentProps) => {
-	let [isCopied, setIsCopied] = useState<boolean>(false);
+	const [isCopied, setIsCopied] = useState<boolean>(false);
 
 	const onCopy = async (): Promise<void> => {
 		if (isCopied) return;

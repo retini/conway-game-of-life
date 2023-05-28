@@ -37,7 +37,7 @@ type ConwayData = {
 // Compute the next generation of a Conway's Game of Life population.
 const computeNextGeneration = (population: ConwayPopulation, size: ConwaySize): ConwayPopulation => {
 	const nextGeneration = population.map((row) => [...row]); // Create a copy of the population.
-	for (let [i, row] of population.entries()) {
+	for (const [i, row] of population.entries()) {
 		for (const [j, cell] of row.entries()) {
 			let aliveNeighborsCount = 0;
 			// Count the number of alive neighbors of a cell.
