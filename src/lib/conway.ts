@@ -14,6 +14,11 @@ const MINIMUM_ALIVE_NEIGHBORS = 2;
 const MAXIMUM_ALIVE_NEIGHBORS = 3;
 const RESURRECTION_NEIGHBORS = 3;
 
+enum CellState {
+	ALIVE = '*',
+	DEAD = '.',
+}
+
 type ConwayPopulation = string[][];
 
 type ConwaySize = {
@@ -43,24 +48,24 @@ const computeNextGeneration = (population: ConwayPopulation, size: ConwaySize): 
 					neighborRow < 0 || neighborRow >= size.rows || neighborColumn < 0 || neighborColumn >= size.columns;
 				if (isOutOfBound) continue;
 				const neighbor = population[neighborRow][neighborColumn];
-				if (neighbor === '*') aliveNeighborsCount++;
+				if (neighbor === CellState.ALIVE) aliveNeighborsCount++;
 			}
-			const isAlive = cell === '*';
+			const isAlive = cell === CellState.ALIVE;
 			// Check whether the cell should live or die.
 			if (
 				isAlive &&
 				(aliveNeighborsCount < MINIMUM_ALIVE_NEIGHBORS || aliveNeighborsCount > MAXIMUM_ALIVE_NEIGHBORS)
 			) {
-				nextGeneration[i][j] = '.';
+				nextGeneration[i][j] = CellState.DEAD;
 				continue;
 			}
 			if (!isAlive && aliveNeighborsCount === RESURRECTION_NEIGHBORS) {
-				nextGeneration[i][j] = '*';
+				nextGeneration[i][j] = CellState.ALIVE;
 			}
 		}
 	}
 	return nextGeneration;
 };
 
-export { computeNextGeneration };
+export { computeNextGeneration, CellState };
 export type { ConwayData };

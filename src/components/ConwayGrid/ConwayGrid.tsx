@@ -1,6 +1,6 @@
 import './ConwayGrid.css';
 import Cell from '../Cell/Cell';
-import { ConwayData } from '../../lib/conway';
+import { ConwayData, CellState } from '../../lib/conway';
 import { ExtendedCSSProperties } from '../../types/styles.types';
 
 const CELL_SIZE = 50;
@@ -16,7 +16,7 @@ const ConwayGrid = ({ conwayData }: ConwayGridProps) => {
 	for (const [i, row] of population.entries()) {
 		for (const [j, cell] of row.entries()) {
 			const id = `${i}-${j}`;
-			cells.push(<Cell key={id} isAlive={cell === '*'} />);
+			cells.push(<Cell key={id} isAlive={cell === CellState.ALIVE} />);
 		}
 	}
 
