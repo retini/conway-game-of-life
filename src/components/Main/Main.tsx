@@ -29,7 +29,9 @@ const Main = () => {
 		} catch (err: unknown) {
 			fileInput.value = '';
 			const error = err as Error;
-			setErrorMessage(error.message);
+			setTimeout(() => {
+				setErrorMessage(error.message);
+			}, 200);
 			return;
 		}
 
