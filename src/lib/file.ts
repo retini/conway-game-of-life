@@ -20,8 +20,16 @@ const parseConwayFile = (file: File): Promise<ConwayData> => {
 		reader.onload = (): void => {
 			const content = reader.result as string;
 			const lines = content.trim().split('\n');
+			if (lines.length === 0) {
+				reject(new Error(`Unexpected empty file`));
+				return;
+			}
 
 			// Parse the generation number.
+			if (lines[0] === '' || lines[0] == null) {
+				reject(new Error(`Missing generation number`));
+				return;
+			}
 			const generationNumberChar = lines[0].split(' ')[1].split(':')[0];
 			const generationNumber = parseInt(generationNumberChar, 10);
 			if (Number.isNaN(generationNumber)) {
@@ -36,6 +44,10 @@ const parseConwayFile = (file: File): Promise<ConwayData> => {
 			}
 
 			// Parse the grid sizes.
+			if (lines[1] === '' || lines[1] == null) {
+				reject(new Error(`Missing grid sizes`));
+				return;
+			}
 			const rowsChar = lines[1].split(' ')[0];
 			const rows = parseInt(rowsChar, 10);
 			if (Number.isNaN(rows)) {
@@ -74,6 +86,10 @@ const parseConwayFile = (file: File): Promise<ConwayData> => {
 
 			// Parse the population state.
 			const population: string[][] = [];
+			if (lines.slice(2).length === 0) {
+				reject(new Error(`Missing population state`));
+				return;
+			}
 			for (const line of lines.slice(2)) {
 				const characters: string[] = [];
 				for (const char of line.trim().split('')) {
