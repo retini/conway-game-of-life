@@ -17,7 +17,7 @@ const CustomFileInput = ({ onFileUpload }: CustomFileInputProps) => {
 	return (
 		<div className='customFileInput'>
 			<button className='btn' onClick={onButtonClick}>
-				Carica
+				Upload a Conway file
 			</button>
 			<input ref={inputRef} type='file' onChange={onFileUpload} />
 		</div>
