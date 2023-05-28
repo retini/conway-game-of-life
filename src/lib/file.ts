@@ -17,7 +17,7 @@ const parseConwayFile = (file: File): Promise<ConwayData> => {
 		const reader = new FileReader();
 		reader.onload = (): void => {
 			const content = reader.result as string;
-			const lines = content.split('\n');
+			const lines = content.trim().split('\n');
 
 			// Parse the generation number.
 			const generationNumberChar = lines[0].split(' ')[1].split(':')[0];
