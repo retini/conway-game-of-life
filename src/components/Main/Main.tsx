@@ -3,8 +3,10 @@ import './Main.css';
 import ConwayGrid from '../ConwayGrid/ConwayGrid';
 import CustomFileInput from '../CustomFileInput/CustomFileInput';
 import Alert from '../Alert/Alert';
+import ClipboardContent from '../ClipboardContent/ClipboardContent';
 import { ConwayData, computeNextGeneration } from '../../lib/conway';
 import { checkConwayFile, parseConwayFile } from '../../lib/file';
+import CONWAY_FILE_SAMPLE from '../../sampleData/conwayFileSample';
 
 const Main = () => {
 	let [isLoading, setIsLoading] = useState<boolean>(false);
@@ -72,6 +74,7 @@ const Main = () => {
 				<>
 					<CustomFileInput onFileUpload={onFileUpload} />
 					{errorMessage && <Alert message={errorMessage} />}
+					<ClipboardContent title='sample.txt' content={CONWAY_FILE_SAMPLE} />
 				</>
 			)}
 		</div>

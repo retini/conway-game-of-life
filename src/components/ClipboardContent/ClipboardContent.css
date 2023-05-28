@@ -1,0 +1,40 @@
+.clipboardContent {
+	border: 1px solid var(--border-primary);
+	border-radius: 15px;
+	box-shadow: var(--shadow-medium);
+}
+
+.clipboardContent .head {
+	padding: 15px 30px;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	background-color: var(--bg-primary);
+	background: linear-gradient(180deg, var(--bg-primary) 50%, var(--bg-tertiary) 100%);
+}
+
+.clipboardContent .head .title {
+	font-family: monospace;
+	font-style: italic;
+	font-size: 17px;
+}
+
+.clipboardContent .head button {
+	background-color: transparent;
+	border: 0;
+	padding: 5px 20px;
+	border-radius: 5px;
+	border: 1px solid var(--border-primary);
+	font-size: 13px;
+	cursor: pointer;
+	font-weight: 500;
+}
+
+.clipboardContent .content {
+	padding: 30px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	background-color: var(--bg-tertiary);
+}

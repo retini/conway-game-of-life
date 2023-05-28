@@ -1,6 +1,7 @@
 :root {
 	--bg-primary: #fff;
 	--bg-secondary: #f1f1f1;
+	--bg-tertiary: #f5f5f5;
 	--border-primary: #e5e5e5;
 	--accent-primary: #933fff;
 	--shadow-medium: 0 6px 16px rgba(40, 60, 80, 0.15);
